@@ -1,12 +1,12 @@
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import AlertMessage from "./components/AlertMessage";
 import ColorPicker from "./components/ColorPicker";
 import NavigationBar from "./components/NavigationBar";
 import TextForm from "./components/TextForm";
 import { useState } from "react";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -66,18 +66,18 @@ function App() {
         about="about"
       />
       <AlertMessage alert={alert} />
-      <ColorPicker mode={mode} color={color} changeColor={setColor} />
+
+      <Routes>
+        <Route exact path="/" element={<>
+          <ColorPicker mode={mode} color={color} changeColor={setColor} />
           <TextForm
             mode={mode}
             toggleMode={toggleMode}
             heading="Hey Suryadeep Enter some text"
           />
-      {/* <Routes>
-        <Route exact path="/" element={<>
- 
         </>}></Route>
         <Route exact path="/about" element={<About />}></Route>
-      </Routes> */}
+      </Routes>
     {/* </Router> */}
     </>
   );
