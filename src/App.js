@@ -1,24 +1,85 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import About from "./components/About";
+import AlertMessage from "./components/AlertMessage";
+import ColorPicker from "./components/ColorPicker";
+import NavigationBar from "./components/NavigationBar";
+import TextForm from "./components/TextForm";
+import { useState } from "react";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
+  const [mode, setMode] = useState("light");
+  const [alert, setAlert] = useState(null);
+  const [color, setColor] = useState("#ffffff");
+  document.getElementsByTagName("body")[0].style.backgroundColor = color;
+
+  const toggleMode = () => {
+    if (mode === "light") {
+      setMode("rainbow");
+      setAlert({
+        type: "success",
+        message: "Changed to rainbow mode",
+      });
+      setTimeout(() => {
+        setAlert(null);
+      }, 1500);
+    } else {
+      setMode("light");
+      setAlert({
+        type: "success",
+        message: "Changed to light mode",
+      });
+      setTimeout(() => {
+        setAlert(null);
+      }, 1500);
+    }
+  };
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: (
+  //       <>
+  //         <ColorPicker mode={mode} color={color} changeColor={setColor} />
+  //         <TextForm
+  //           mode={mode}
+  //           toggleMode={toggleMode}
+  //           heading="Hey Suryadeep Enter some text"
+  //         />
+  //       </>
+  //     ),
+  //   },
+  //   {
+  //     path: "/about",
+  //     element: <About />,
+  //   },
+  // ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    // <Router>
+      <>
+      <NavigationBar
+        mode={mode}
+        toggleMode={toggleMode}
+        title="Hello Suryadeep"
+        about="about"
+      />
+      <AlertMessage alert={alert} />
+      <ColorPicker mode={mode} color={color} changeColor={setColor} />
+          <TextForm
+            mode={mode}
+            toggleMode={toggleMode}
+            heading="Hey Suryadeep Enter some text"
+          />
+      {/* <Routes>
+        <Route exact path="/" element={<>
+ 
+        </>}></Route>
+        <Route exact path="/about" element={<About />}></Route>
+      </Routes> */}
+    {/* </Router> */}
+    </>
   );
 }
 
