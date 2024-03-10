@@ -14,10 +14,10 @@ export default function NavigationBar(props) {
       >
         <Container className={props.mode}>
           {/* <Navbar.Brand ><Link to="/"  style={{textDecoration: 'none', color:'white'}}>{props.title}</Link></Navbar.Brand> */}
-          <Navbar.Brand href="/" >{props.title}</Navbar.Brand>
+          <Navbar.Brand href="#" >{props.title}</Navbar.Brand>
           <Nav className={`me-auto ${props.mode}`}>
             {/* <Nav.Link><Link to="/about" style={{textDecoration: 'none', color:'white'}}>{props.about}</Link></Nav.Link> */}
-            <Nav.Link href="/">{props.about}</Nav.Link>
+            <Nav.Link href="#">{props.about}</Nav.Link>
           </Nav> 
           <Form.Check
             type="switch"
